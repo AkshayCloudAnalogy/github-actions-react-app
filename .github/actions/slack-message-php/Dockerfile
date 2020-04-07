@@ -4,7 +4,11 @@ COPY --from=composer /user/bin/composer /user/bin/composer
 
 WORKDIR /usr/src/app
 # Not copy vendor folder
-COPY . .
+COPY composer.json .
+COPY composer.lock .
+COPY script.php .
+COPY Dockerfile .
+
 RUN apt-get update
 RUN apt-get -y install zip
 RUN composer install
