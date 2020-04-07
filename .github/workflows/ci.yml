@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [develop]
+  push:
+    branches: [develop]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use NodeJS
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+      - run: yarn install --frozen-lockfile # npm install or npm ci
+      - run: yarn run format:check
+      # - run: yarn run test --coverage
+      - run: yarn run test
+        env:
+          CI: true
+      - name: Build Project
+        if: github.event_name == 'push'
+        run: yarn run build
+      - name: Deploy to Staging
+        if: github.event_name == 'push'
+        run: npx surge  --project ./build --domain http://resolute-plot.surge.sh/
+        env:
+          SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
