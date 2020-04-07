@@ -26,7 +26,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: "12.x"
-      - run: yarn install --frozen-lockfile # npm install or npm ci
+      - run: yarn install --frozen-lockfile # npm install or npm ci for npm
       - run: yarn run format:check
       # - run: yarn run test --coverage
       - run: yarn run test
