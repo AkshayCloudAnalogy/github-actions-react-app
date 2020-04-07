@@ -35,7 +35,7 @@ jobs:
       - name: Upload Test Coverage
         uses: actions/upload-artifact@v1
         with:
-          nme: code-coverage
+          name: code-coverage
           path: coverage
       - name: Build Project
         if: github.event_name == 'push'
