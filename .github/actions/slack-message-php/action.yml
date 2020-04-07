@@ -1,0 +1,16 @@
+name: "Send a Slack Message"
+author: Akshay Dhiman
+description: "Send a Slack Message with Workflow information"
+inputs:
+  slack_webhook:
+    description: "Slack Webhook"
+    required: true
+  message:
+    description: "Slack Message Body"
+    required: true
+runs:
+  using: docker
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.slack_webhook }}
+    - ${{ inputs.message }}

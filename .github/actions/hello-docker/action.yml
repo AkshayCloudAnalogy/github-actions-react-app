@@ -1,0 +1,17 @@
+name: Hello World Docker
+author: Akshay Dhiman
+description: Hello World Action
+inputs:
+  who-to-greet:
+    description: "Who to greet?"
+    default: Akshay
+    required: true
+outputs:
+  time:
+    description: "The Greeting time"
+runs:
+  using: docker
+  image: "Dockerfile"
+  # entrypoint:
+  args:
+    - ${{ inputs.who-to-greet }}

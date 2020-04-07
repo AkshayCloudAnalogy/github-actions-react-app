@@ -22,3 +22,16 @@ jobs:
           who-to-greet: "World"
       - run: |
           echo "Time: ${{ steps.hello.outputs.time }}"
+          echo $HELLO
+      - uses: ./.github/actions/hello-docker
+        id: hello
+        with:
+          who-to-greet: "Docker"
+      - run: |
+          echo "Time: ${{ steps.hello.outputs.time }}"
+          echo $HELLO
+      - name: Send a Slack Message
+        uses: ./github/actions/slack-message-php
+        with:
+          slack_webhook: ${{ secrets.SLACK_WEBHOOK }}
+          message: Hello Slack
