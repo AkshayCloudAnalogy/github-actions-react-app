@@ -31,7 +31,7 @@ jobs:
           echo "Time: ${{ steps.hello.outputs.time }}"
           echo $HELLO
       - name: Send a Slack Message
-        uses: ./github/actions/slack-message-php
+        uses: ./.github/actions/slack-message-php
         with:
           slack_webhook: ${{ secrets.SLACK_WEBHOOK }}
           message: Hello Slack
