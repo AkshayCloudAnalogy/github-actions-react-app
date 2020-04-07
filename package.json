@@ -1,5 +1,5 @@
 {
-  "name": "react-app",
+  "name": "github-actions-react-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -13,8 +13,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "CI=true react-scripts test",
+    "test:windows": "set CI=true &&react-scripts test",
+    "eject": "react-scripts eject",
+    "format:check": "prettier --check \"**/*.{js,jsx,yml,yml,css,scss,md,json}\"",
+    "format": "prettier --write \"**/*.{js,jsx,yml,yml,css,scss,md,json}\""
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -30,5 +33,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "prettier": "2.0.4"
   }
 }
