@@ -4,7 +4,10 @@ require_once 'vendor/autoload.php';
 Requests::register_autoloader();
 
 // var_dump($argv);
-// var_dump($_ENV);
+
+echo "::group::ENV\n";
+var_dump($_ENV);
+echo "::endgroup::\n";
 
 echo "::debug ::Sending a request to slack.\n";
 
@@ -55,7 +58,9 @@ var_dump($response);
 echo "::endgroup::\n";
 
 if (!$response->success) {
+    echo "::group::Slack Response Error:\n";
     echo $response->body;
+    echo "::endgroup::\n";
     exit(1);
 }
 
