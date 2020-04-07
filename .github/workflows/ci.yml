@@ -44,7 +44,7 @@ jobs:
         if: github.event_name == 'push'
         uses: actions/upload-artifact@v1
         with:
-          nme: build
+          name: build
           path: build
       # - uses: actions/download-artifact
       - name: Deploy to Staging
