@@ -28,7 +28,7 @@ jobs:
           node-version: "12.x"
       - run: yarn install --frozen-lockfile # npm install or npm ci for npm
       - run: yarn run format:check
-      # - run: yarn run test --coverage
+      # - run: yarn run test --coverage # not working
       - run: yarn run test
         env:
           CI: true
@@ -44,7 +44,7 @@ jobs:
         if: github.event_name == 'push'
         uses: actions/upload-artifact@v1
         with:
-          nme: build
+          name: build
           path: build
       # - uses: actions/download-artifact
       - name: Deploy to Staging
