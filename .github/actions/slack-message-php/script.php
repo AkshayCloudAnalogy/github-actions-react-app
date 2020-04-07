@@ -9,7 +9,7 @@ Requests::register_autoloader();
 echo "::debug ::Sending a request to slack.\n";
 
 $response = Requests::post(
-    $_ENV['INPUT_SLACK_WEBHOOK'],
+    $_ENV['INPUT_SLACK_GITHUB_ACTIONS_WEBHOOK'],
     array(
         "Content-type" => "application/json",
     ),
