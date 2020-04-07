@@ -33,5 +33,5 @@ jobs:
       - name: Send a Slack Message
         uses: ./.github/actions/slack-message-php
         with:
-          slack_webhook: ${{ secrets.SLACK_WEBHOOK }}
+          slack_webhook: ${{ secrets.SLACK_GITHUB_ACTIONS_WEBHOOK }}
           message: Hello Slack
