@@ -6,7 +6,7 @@ Requests::register_autoloader();
 // var_dump($argv);
 // var_dump($_ENV);
 
-echo "::debug ::Sending a request to slack.\n"
+echo "::debug ::Sending a request to slack.\n";
 
 $response = Requests::post(
     $_ENV['INPUT_SLACK_WEBHOOK'],
