@@ -1,9 +1,10 @@
 FROM php:7.4.2
 
-COPY --from=composer /user/bin/composer /user/bin/composer
+COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 WORKDIR /usr/src/app
 # Not copy vendor folder
+# COPY . .
 COPY composer.json .
 COPY composer.lock .
 COPY script.php .
